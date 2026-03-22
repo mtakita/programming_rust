@@ -8,12 +8,10 @@ fn main() {
   });
 
   println!("Serving on http://localhost:3000...");
-  server
-    .bind("127.0.0.1:3000").expect("error binding server to address")
-    .run().expect("error running server");
+  server.bind("127.0.0.1:3000").expect("error binding server to address").run().await();
 }
 
-fn get_index() -> HttpResponse {
+async fn get_index() -> HttpResponse {
   HttpResponse::Ok()
     .content_type("text/html")
     .body(
